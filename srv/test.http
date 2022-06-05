@@ -1,0 +1,76 @@
+GET http://localhost:4004/CatalogService
+
+###
+GET http://localhost:4004/CatalogService/$metadata
+
+###
+GET http://localhost:4004/CatalogService/EmployeeSet?$top=5
+
+###
+GET http://localhost:4004/CatalogService/POs?$top=2&$expand=Items,PARTNER_GUID
+
+###Create New Employee
+
+POST http://localhost:4004/CatalogService/EmployeeSet
+Content-Type: application/json
+
+{
+            "nameFirst": "Ishika",
+            "nameMiddle": null,
+            "nameLast": "Ghosh",
+            "nameInitials": null,
+            "sex": "M",
+            "language": "E",
+            "email": "koolindan@gmail.com",
+            "loginName": "IGHOSH",
+            "salaryAmount": 77549,
+            "accountNumber": "111222333",
+            "bankId": "51000655",
+            "bankName": "My Bank of Citi"
+}
+            
+###Read SIngle EMployee
+##Below does not work in ODATA V4, it works in ODATA V2.
+###GET http://localhost:4004/CatalogService/EmployeeSet('8d3ca84f-4862-4708-8598-9cabf97da9bd')
+GET http://localhost:4004/CatalogService/EmployeeSet/2e263257-0501-475f-b95c-eff129468d00
+
+###Update the Recoord This will make all other field as Null
+PUT http://localhost:4004/CatalogService/EmployeeSet/2e263257-0501-475f-b95c-eff129468d00
+Content-Type: application/json;IEEE754Compatible=true
+
+{
+    "salaryAmount": "10000000.50",
+    "Currency_code": "USD"
+}
+
+### Patch for updating specific field
+
+PATCH http://localhost:4004/CatalogService/EmployeeSet/2e263257-0501-475f-b95c-eff129468d00
+Content-Type: application/json;IEEE754Compatible=true
+
+{
+    "salaryAmount": "10000",
+    "Currency_code": "USD"
+}
+
+###Read SIngle PO with Old syntax as Odata V2. If it is UUID type then it wont work. Because it is character 32 it will work as Odata V2
+GET http://localhost:4004/CatalogService/POs('74867AD200E41EDBA5D8B0C98DC28052')
+###Generic handlers
+###Create PO, Here if I dont pass Node_KEY which is of type character 32 then it will give error
+###If it is type UUID then it would have been generated the value
+POST http://localhost:4004/CatalogService/POs
+Content-Type: application/json 
+
+{
+	"CURRENCY_CODE": "EUR",
+	"GROSS_AMOUNT": "3913.91",
+	"NET_AMOUNT": "3289",
+	"TAX_AMOUNT": "624.91",	
+	"PO_ID": "300000139",
+    "NODE_KEY": "74867AD200E41EDBA5D8B0C98DC28098",
+	"PARTNER_GUID_NODE_KEY": "74867AD200E41EDBA5D8B06885B04052",
+	"LIFECYCLE_STATUS": "N",
+	"OVERALL_STATUS": "P"
+}
+
+

@@ -2,9 +2,10 @@
 using { capm.db.master, capm.db.transaction } from '../db/datamodel';
 
 service CatalogService@(path:'/CatalogService') {
-
+@Capabilities : { Insertable,Updatable,Deletable, }
 entity EmployeeSet as projection on master.employees;
 entity ProductSet as projection on master.product;
+@readonly
 entity BPSet as projection on master.businesspartner;
 // entity ProductText as projection on master.prodtext;
 entity AddressSet as projection on master.address;
