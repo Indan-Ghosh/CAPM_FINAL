@@ -73,4 +73,44 @@ Content-Type: application/json
 	"OVERALL_STATUS": "P"
 }
 
+###Get All EMployees with CUstom Handler
+
+GET http://localhost:4004/service1/ReadEmployeeSrv/02BD2137-0890-1EEA-A6C2-BB55C19807FB 
+
+###Create EMployee with CUstom Handler
+
+POST http://localhost:4004/service1/InsertEmployeeSrv 
+Content-Type: application/json
+
+{
+            "nameFirst": "Inshika",
+            "nameMiddle": "",
+            "nameLast": "Ghosh",
+            "nameInitials": "",
+            "sex": "F",
+            "language": "E",
+            "email": "indan2804@gmail.com",
+            "loginName": "INGHOSH",            
+            "accountNumber": "111222333",
+            "bankId": "51000655",
+            "bankName": "My Bank of HDFC"
+}
+
+###Update Employee with Custom Handler
+PUT http://localhost:4004/service1/UpdateEmployeeSrv/02BD2137-0890-1EEA-A6C2-BB55C19807FB 
+Content-Type: application/json
+
+{
+            "ID": "02BD2137-0890-1EEA-A6C2-BB55C19807FB",
+            "nameFirst": "Inshika123",
+            "nameMiddle": "kumar",
+            "nameLast": "Roy"
+}
+
+###Delete EMployee with Custom Handler
+DELETE http://localhost:4004/service1/DeleteEmployeeSrv/63286415-1466-41a4-84a1-d19c6f14e756
+
+
+
+
 
