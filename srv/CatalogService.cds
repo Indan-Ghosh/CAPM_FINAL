@@ -13,6 +13,9 @@ entity AddressSet as projection on master.address;
 entity POs @(title : '{i18n>poheader}') as projection on transaction.purchaseorder{
     *,
     Items: redirected to poitems
+}actions{
+    function largestOrder() returns array of POs;
+    action boost();
 }
     
     entity poitems@(title: '{i18n>poitems}') as projection on transaction.poitems{

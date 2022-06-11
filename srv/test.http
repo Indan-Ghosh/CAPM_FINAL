@@ -111,6 +111,15 @@ Content-Type: application/json
 DELETE http://localhost:4004/service1/DeleteEmployeeSrv/63286415-1466-41a4-84a1-d19c6f14e756
 
 
+###Get a random PO
+http://localhost:4004/CatalogService/POs?$top=5
 
+###Calling custom action for the entity
+POST http://localhost:4004/CatalogService/POs('74867AD200E41EDBA5D8B0C98DC2C052')/CatalogService.boost
+Content-Type: application/json
 
+{}
+
+###Get Largest Order
+GET http://localhost:4004/CatalogService/POs('74867AD200E41EDBA5D8B0C98DC2C052')/CatalogService.largetOrder()
 
