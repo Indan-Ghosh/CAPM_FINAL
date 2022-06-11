@@ -1,6 +1,6 @@
 module.exports = cds.service.impl(async function(){
 
-    const {  EmployeeSet  } = this.entities;
+    const {  EmployeeSet, POs  } = this.entities;
 
     this.before('UPDATE', EmployeeSet, (req, res) => {
             
@@ -10,15 +10,15 @@ module.exports = cds.service.impl(async function(){
 
     });
 
-    this.on('boost', async(req, res) => {
+    this.on('boost', async req => {
         try {
             const ID = req.params[0];
-            console.log("Your purchase Order: " + ID + "Will be boosted");
+            console.log( ID);
             const tx = cds.tx(req);
             await tx.update(POs).with({
-                GROSS_AMOUNT: round({'+=' : 20000},2),
+                GROSS_AMOUNT: { '+=' : 20000},
                 NOTE: "Boosted!!"
-            });
+            }).where(ID);
             return "Boost was successful";
             
         } catch (error) {

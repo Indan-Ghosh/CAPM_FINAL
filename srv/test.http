@@ -80,9 +80,10 @@ GET http://localhost:4004/service1/ReadEmployeeSrv/02BD2137-0890-1EEA-A6C2-BB55C
 ###Create EMployee with CUstom Handler
 
 POST http://localhost:4004/service1/InsertEmployeeSrv 
-Content-Type: application/json
+Content-Type: application/json;IEEE754Compatible=true
 
 {
+            "ID": "02BD2137-0890-1EEA-A6C2-BB55C19807FB",
             "nameFirst": "Inshika",
             "nameMiddle": "",
             "nameLast": "Ghosh",
@@ -91,8 +92,6 @@ Content-Type: application/json
             "language": "E",
             "email": "indan2804@gmail.com",
             "loginName": "INGHOSH",            
-            "accountNumber": "111222333",
-            "bankId": "51000655",
             "bankName": "My Bank of HDFC"
 }
 
@@ -121,5 +120,22 @@ Content-Type: application/json
 {}
 
 ###Get Largest Order
-GET http://localhost:4004/CatalogService/POs('74867AD200E41EDBA5D8B0C98DC2C052')/CatalogService.largetOrder()
+GET http://localhost:4004/CatalogService/POs('74867AD200E41EDBA5D8B0C98DC2C052')/CatalogService.largestOrder()
 
+###Get Specific Order
+GET http://localhost:4004/CatalogService/POs('74867AD200E41EDBA5D8B0C98DC2C052')
+
+###V2 service 
+GET http://localhost:4004/v2/CatalogService/EmployeeSet?$top=5
+
+###Get Specific Order using v2
+GET http://localhost:4004/v2/CatalogService/POs('74867AD200E41EDBA5D8B0C98DC2C052')
+
+###Calling custom action for the entity
+POST http://localhost:4004/v2/CatalogService/POs_boost?NODE_KEY=74867AD200E41EDBA5D8B0C98DC2C052
+Content-Type: application/json
+
+{}
+
+###Calling function using V2
+GET http://localhost:4004/v2/CatalogService/POs_largestOrder?ID=74867AD200E41EDBA5D8B0C98DC2C052

@@ -69,7 +69,7 @@ const myServiceDemo = function (srv) {
         
         let returnData = await cds.transaction(req).run([
             // this is an array where i can do multiple action
-            INSERT.into("employees").entries([dataSet])
+            INSERT.into('employees').entries([dataSet])
         ]).then((resolve,reject)=>{
             if (typeof(resolve) !== undefined){
                 return req.data;
