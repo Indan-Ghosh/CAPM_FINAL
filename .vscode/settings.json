@@ -3,5 +3,12 @@
     "**/.gitignore": true,
     "**/.git": true,
     "**/.vscode": true
-  }
+},
+"sqltools.connections": [
+    {
+        "dialect": "SQLite",
+        "name": "capmdb",
+        "database": "/home/user/projects/CAPM2/capm.db"
+    }
+]
 }

@@ -13,7 +13,10 @@ module.exports = cds.service.impl(async function(){
     this.on('boost', async req => {
         try {
             const ID = req.params[0];
+            const nextval = req.params[1];
             console.log( ID);
+            console.log(nextval);
+            
             const tx = cds.tx(req);
             await tx.update(POs).with({
                 GROSS_AMOUNT: { '+=' : 20000},

@@ -1,0 +1,1 @@
+select * from capm_db_transaction_poitems 
